@@ -5,9 +5,24 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+alias vim=nvim
+alias dc=docker-compose
+alias docker-stop="docker stop \$(docker ps -aq)"
+alias ll="ls -lah"
+alias gitpg="git branch -vv | grep ': gone]' | cut -c 2- | awk '{print \$1}' | xargs git branch -D"
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+plugins=(osx git tig)
+
 # Customize to your needs...
+source ~/bin/tmuxinator.zsh
+
+eval "$(rbenv init -)"
+
+# added by travis gem
+[ -f /Users/gabrielsomoza/.travis/travis.sh ] && source /Users/gabrielsomoza/.travis/travis.sh
+eval $(/usr/libexec/path_helper -s)
